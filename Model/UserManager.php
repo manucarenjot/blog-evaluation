@@ -52,9 +52,41 @@ class UserManager
                     }
                 }
             }
-
-
         }
+    }
 
+    public static function connectUserWithMail(string $mail, string $password)
+    {
+        $alert = [];
+        $result = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = '{$mail}'");
+
+        $result->execute();
+        $data = $result->fetch();
+        if ($data) {
+            if (password_verify($password, $data['password'])) {
+                $_SESSION['user'] = $data;
+                $alert[] = '<div class="alert-succes">Vous êtes connecté ! '.$data["username"].'</div>';
+                if(count($alert) > 0) {
+                    $_SESSION['alert'] = $alert;
+                    header('LOCATION: ?c=home');
+                }
+
+            }
+            else {
+                $alert[] = '<div class="alert-error">Adresse e-mail ou mot de passe invalide !</div>';
+                if(count($alert) > 0) {
+                    $_SESSION['alert'] = $alert;
+                    header('LOCATION: ?c=user&a=login');
+                }
+
+            }
+        }
+        else {
+            $alert[] = '<div class="alert-error">Adresse e-mail ou mot de passe invalide !</div>';
+            if(count($alert) > 0) {
+                $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=user&a=login');
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ class UserController extends AbstactController
     public function register()
     {
         $this->render('user/register');
+
         if ($this->getPost()) {
             $username = trim(strip_tags($_POST['username']));
             $mail = trim(strip_tags(($_POST['mail'])));
@@ -59,11 +60,30 @@ class UserController extends AbstactController
     public function login()
     {
         $this->render('user/login');
+        if ($this->getPost()) {
+            $mail = trim(strip_tags(($_POST['mail'])));
+            $password = ($_POST['password']);
+
+            UserManager::connectUserWithMail($mail, $password);
+        }
     }
 
     public function logout()
     {
         $this->render('user/logout');
     }
+
+    public function getConnected() {
+        if (isset($_SESSION['user'])) {
+            header('LOCATION: ?c=home');
+        }
+    }
+
+    public function ifNotConnected() {
+        if (!isset($_SESSION['user'])) {
+            header('LOCATION: ?c=home');
+        }
+    }
+
 
 }

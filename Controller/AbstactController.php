@@ -23,4 +23,6 @@ abstract class AbstactController
     public function getDelete(): bool {
         return isset($_POST['delete']);
     }
+
+
 }
