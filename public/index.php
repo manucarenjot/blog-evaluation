@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -23,14 +24,29 @@ session_start();
     }
     else {
         ?>
+        <a href="?c=user">Profil|</a>
     <a href="?c=user&a=logout">Se déconnecter</a>
     <?php
     }
     ?>
-    <a href="?c=user">Profil|</a>
-    <a href="?c=espace-moderation">Espace-moderation|</a>
-    <a href="?c=espace-admin">Espace-admin|</a>
     <a href="?c=contact">Contact|</a>
+    <?php
+    if (isset($_SESSION['admin']) or isset($_SESSION['moderateur']))
+    {
+    ?>
+    <a href="?c=espace-moderation">Espace-moderation|</a>
+
+
+    <?php
+    }
+    ?>
+    <?php
+    if (isset($_SESSION['admin'])) {
+    ?>
+    <a href="?c=espace-admin">Espace-admin|</a>
+    <?php
+    }
+    ?>
 </div>
 
 <?php
