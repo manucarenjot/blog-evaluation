@@ -11,7 +11,9 @@ class AdminManager
 
         if ($select->execute()) {
             $datas = $select->fetchAll();
-            $_SESSION['admin'] = $datas;
+            foreach ($datas as $data) {
+                $_SESSION['admin'] = $data['mail'];
+            }
         }
     }
 }
