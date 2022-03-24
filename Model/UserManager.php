@@ -93,6 +93,22 @@ class UserManager
             foreach ($datas as $data) { ?>
             <div class="userData">
                 <h1><?=$data['username']?></h1>
+                <?php
+                if (isset($_SESSION['admin']))
+                {
+                ?>
+                    <h4>Role : Administrateur</h4>
+                    <?php
+                }
+                    ?>
+                <?php
+                if (isset($_SESSION['modo']))
+                {
+                    ?>
+                    <h4>Role : Modérateur</h4>
+                    <?php
+                }
+                ?>
                 <p> Adresse e-mail : <?=$data['mail']?></p>
                 <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
             </div>
