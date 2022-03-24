@@ -15,7 +15,6 @@ class UserController extends AbstactController
             $password = trim(strip_tags($_POST['password']));
             $passwordRepeat = trim(strip_tags($_POST['password-repeat']));
             $alert = [];
-
             if (empty($username)) {
                 $alert[] = 'Un des champs est vide';
             }
@@ -28,6 +27,11 @@ class UserController extends AbstactController
             if (empty($passwordRepeat)) {
                 $alert[] = 'Un des champs est vide';
             }
+            if ($password !== $passwordRepeat) {
+                $alert[] = 'Les mots de passe ne correspondent pas !';
+
+            }
+
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
                 header('LOCATION: ?c=user&a=register');

@@ -7,7 +7,7 @@
         </tr>
         <tr>
             <td><label for="mail">Adresse e-mail :</label></td>
-            <td><input type="emailmail" name="mail" id="mail" required></td>
+            <td><input type="email" name="mail" id="mail" required></td>
         </tr>
         <tr>
             <td><label for="password">Password :</label></td>
