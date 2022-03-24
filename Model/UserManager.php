@@ -92,7 +92,7 @@ class UserManager
             $datas = $select->fetchAll();
             foreach ($datas as $data) { ?>
             <div class="userData">
-                <h1><?=$data['username']?></h1>
+               <h1><?=ucfirst($data['username']) ?></h1>
                 <?php
                 if (isset($_SESSION['admin']))
                 {
