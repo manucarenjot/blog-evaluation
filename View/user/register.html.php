@@ -1,5 +1,5 @@
 
-<form action="register.html.php" method="post" id="register">
+<form action="?c=user&a=register" method="post" id="register">
     <table>
         <tr>
             <td><label for="username">Nom d'utilisateur :</label></td>
