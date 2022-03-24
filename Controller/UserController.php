@@ -5,6 +5,10 @@ class UserController extends AbstactController
     public function index()
     {
         $this->render('user/profil');
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            UserManager::getDataUser($id);
+        }
     }
     public function register()
     {
@@ -50,8 +54,10 @@ class UserController extends AbstactController
             else {
                 UserManager::getMailExist($mail);
                 UserManager::getUsernameExist($username);
+
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 UserManager::addUser($username, $mail, $passwordHash);
+
             }
         }
 

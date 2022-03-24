@@ -1,5 +1,17 @@
 <?php
+
+use App\Connect\Connect;
+
 class AdminManager
 {
 
+
+    public static function getAdmin() {
+        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_admin WHERE mail = '{$_SESSION['user']['mail']}'");
+
+        if ($select->execute()) {
+            $datas = $select->fetchAll();
+            $_SESSION['admin'] = $datas;
+        }
+    }
 }

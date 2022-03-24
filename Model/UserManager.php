@@ -65,12 +65,7 @@ class UserManager
         if ($data) {
             if (password_verify($password, $data['password'])) {
                 $_SESSION['user'] = $data;
-                $alert[] = '<div class="alert-succes">Vous êtes connecté ! '.$data["username"].'</div>';
-                if(count($alert) > 0) {
-                    $_SESSION['alert'] = $alert;
-                    header('LOCATION: ?c=home');
-                }
-
+                header('LOCATION: ?c=home&a=role');
             }
             else {
                 $alert[] = '<div class="alert-error">Adresse e-mail ou mot de passe invalide !</div>';
@@ -86,6 +81,23 @@ class UserManager
             if(count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
                 header('LOCATION: ?c=user&a=login');
+            }
+        }
+    }
+
+    public static function getDataUser($id) {
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user where id = '{$id}'");
+
+        if ($select->execute()) {
+            $datas = $select->fetchAll();
+            foreach ($datas as $data) { ?>
+            <div class="userData">
+                <h1><?=$data['username']?></h1>
+                <p> Adresse e-mail : <?=$data['mail']?></p>
+                <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
+            </div>
+<?php
+
             }
         }
     }

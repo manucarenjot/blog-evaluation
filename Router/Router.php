@@ -29,6 +29,9 @@ class Router
             case 'add-article':
                 $control->addArticle();
                 break;
+            case 'role':
+                $control->getRole();
+                break;
 
 
 

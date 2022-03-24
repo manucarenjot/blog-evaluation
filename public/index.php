@@ -24,7 +24,7 @@ session_start();
     }
     else {
         ?>
-        <a href="?c=user">Profil|</a>
+        <a href="?c=user&id=<?=$_SESSION['user']['id']?>">Profil|</a>
     <a href="?c=user&a=logout">Se déconnecter</a>
     <?php
     }
@@ -72,7 +72,7 @@ $action = isset($_GET['a']) ? Router::secureUrl($_GET['a']) : 'index';
 
 switch ($page) {
     case 'home':
-        Router::route('HomeController');
+        Router::route('HomeController', $action);
         break;
     case 'article':
         Router::route('ArticleController', $action);
