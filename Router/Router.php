@@ -23,6 +23,9 @@ class Router
             case 'register':
                 $control->register();
                 break;
+            case 'update':
+                $control->update();
+                break;
             case 'add-role':
                 $control->addRole();
                 break;
