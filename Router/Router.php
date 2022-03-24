@@ -20,15 +20,17 @@ class Router
             case 'login':
                 $control->login();
                 break;
-            case 'update-profil':
-                $control->update();
+            case 'register':
+                $control->register();
                 break;
-            case 'messages':
-                $control->messages();
+            case 'add-role':
+                $control->addRole();
                 break;
-            case 'devis':
-                $control->devis();
+            case 'add-article':
+                $control->addArticle();
                 break;
+
+
 
         }
     }

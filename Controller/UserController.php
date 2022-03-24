@@ -6,10 +6,19 @@ class UserController extends AbstactController
     {
         $this->render('user/profil');
     }
-
-    public function inscriptionConnect()
+    public function register()
     {
-        $this->render('user/connect&inscription');
+        $this->render('user/register');
+    }
+
+    public function login()
+    {
+        $this->render('user/login');
+    }
+
+    public function logout()
+    {
+        $this->render('user/logout');
     }
 
 }
