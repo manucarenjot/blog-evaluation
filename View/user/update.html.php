@@ -9,10 +9,6 @@
             <td><input type="text" name="username" id="username" value="<?=$_SESSION['user']['username']?>" required></td>
         </tr>
         <tr>
-            <td><label for="mail">Adresse e-mail :</label></td>
-            <td><input type="email" name="mail" id="mail" value="<?=$_SESSION['user']['mail']?>"  required></td>
-        </tr>
-        <tr>
             <td><label for="password">Password :</label></td>
             <td><input type="password" name="password" id="password" required></td>
         </tr>

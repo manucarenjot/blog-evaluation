@@ -118,16 +118,21 @@ class UserManager
         }
     }
 
-    public static function profilUpdate(string $username, string $mail, string $password) {
+    public static function profilUpdate(string $username, string $password)
+    {
         $update = Connect::getPDO()->prepare("UPDATE fpm03_user 
-                                                    SET username = '{$username}', mail = '{$mail}', password = '{$password}'
+                                                    SET username = '{$username}', password = '{$password}'
                                                     WHERE id = '{$_SESSION['user']['id']}'");
         if ($update->execute()) {
-            $alert = [];
-            $alert[] = '<div class="alert-succes">Profil modifié</div>';
-            if(count($alert) > 0) {
-                $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=user&id='.$_SESSION['user']['id']);
+            $datas = $update->fetchAll();
+            foreach ($datas as $data) {
+                $_SESSION[user] = $datas;
+                $alert = [];
+                $alert[] = '<div class="alert-succes">Profil modifié</div>';
+                if (count($alert) > 0) {
+                    $_SESSION['alert'] = $alert;
+                    header('LOCATION: ?c=user&id=' . $_SESSION['user']['id']);
+                }
             }
         }
     }
