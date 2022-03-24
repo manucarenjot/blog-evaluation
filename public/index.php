@@ -31,13 +31,16 @@ session_start();
     ?>
     <a href="?c=contact">Contact|</a>
     <?php
-    if (isset($_SESSION['admin']) or isset($_SESSION['moderateur']))
+    if (isset($_SESSION['admin']) or isset($_SESSION['modo']) )
     {
+
+
     ?>
     <a href="?c=espace-moderation">Espace-moderation|</a>
 
 
     <?php
+
     }
     ?>
     <?php

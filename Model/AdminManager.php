@@ -6,7 +6,7 @@ class AdminManager
 {
 
 
-    public static function getAdmin() {
+    public static function getAdmin(): void {
         $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_admin WHERE mail = '{$_SESSION['user']['mail']}'");
 
         if ($select->execute()) {

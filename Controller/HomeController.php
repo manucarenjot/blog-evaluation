@@ -14,7 +14,9 @@ class HomeController extends AbstactController
         $this->render('user/role');
         if (isset($_SESSION['user'])) {
             $alert = [];
+            ModoManager::getModo();
             AdminManager::getAdmin();
+
             $alert[] = '<div class="alert-succes">Vous êtes connecté ! '.$_SESSION['user']["username"].'</div>';
             if(count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
