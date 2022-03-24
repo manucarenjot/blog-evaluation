@@ -47,6 +47,7 @@ class UserController extends AbstactController
                 header('LOCATION: ?c=user&a=register');
             }
             else {
+                UserManager::getMailUser($mail);
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 UserManager::addUser($username, $mail, $passwordHash);
             }
