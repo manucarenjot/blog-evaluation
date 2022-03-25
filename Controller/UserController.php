@@ -55,7 +55,7 @@ class UserController extends AbstactController
             } else {
                 UserManager::getMailExist($mail);
                 UserManager::getUsernameExist($username);
-
+                $username = lcfirst($username);
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 UserManager::addUser($username, $mail, $passwordHash);
 

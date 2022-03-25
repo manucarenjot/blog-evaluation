@@ -9,6 +9,7 @@ require __DIR__ . '/Model/AdminManager.php';
 require __DIR__ . '/Model/ArticleManager.php';
 require __DIR__ . '/Model/ModoManager.php';
 require __DIR__ . '/Model/UserManager.php';
+require __DIR__ . '/Model/BannedManager.php';
 
 require __DIR__ . '/Controller/AbstactController.php';
 require __DIR__ . '/Controller/AdminController.php';
