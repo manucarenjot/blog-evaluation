@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -59,7 +60,6 @@ use App\Controller\ErrorController\ErrorController;
 
 
 require __DIR__ . '/../require.php';
-
 if (isset($_SESSION['alert']) && count($_SESSION['alert']) > 0) {
     $alerts = $_SESSION['alert'];
     unset($_SESSION['alert']);

@@ -28,5 +28,9 @@ public function getBanned(): bool {
     return isset($_POST['banned']);
 }
 
+    public function getModo(): bool {
+        return isset($_POST['addModo']);
+    }
+
 
 }
