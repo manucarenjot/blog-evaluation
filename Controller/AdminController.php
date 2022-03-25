@@ -6,9 +6,10 @@ class AdminController  extends AbstactController {
         $this->render('admin/espace-admin');
         UserManager::getAllUser();
         if ($this->getBanned()) {
-            echo 'ok';
+
             $mail = trim(strip_tags($_POST['mail']));
             $username = trim(strip_tags($_POST['username']));
+            BannedManager::getMailBanned($mail);
             BannedManager::addBannedUser($mail, $username);
         }
     }
