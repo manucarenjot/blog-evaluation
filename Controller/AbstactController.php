@@ -23,6 +23,9 @@ abstract class AbstactController
     public function getDelete(): bool {
         return isset($_POST['delete']);
     }
+    public function getDeleteBanned(): bool {
+        return isset($_POST['deleteBanned']);
+    }
 
 public function getBanned(): bool {
     return isset($_POST['banned']);

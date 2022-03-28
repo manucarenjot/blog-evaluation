@@ -6,6 +6,7 @@ class AdminController  extends AbstactController {
         $this->render('admin/espace-admin');
         UserManager::getAllUser();
         BannedManager::getAllBannedUser();
+        ModoManager::getAllModo();
         if ($this->getBanned()) {
 
             $mail = trim(strip_tags($_POST['mail']));
@@ -21,10 +22,15 @@ class AdminController  extends AbstactController {
             ModoManager::addModoUser($mail, $username);
         }
 
-        if ($this->getDelete()) {
+        if ($this->getDeleteBanned()) {
             $mail = trim(strip_tags($_POST['mail']));
             $username = trim(strip_tags($_POST['username']));
             BannedManager::debanned($mail, $username);
+        }
+        if ($this->getDelete()) {
+            $mail = trim(strip_tags($_POST['mail']));
+            $username = trim(strip_tags($_POST['username']));
+            ModoManager::deleteRole($mail, $username);
         }
     }
 
