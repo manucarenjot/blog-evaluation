@@ -85,8 +85,8 @@ class UserManager
         }
     }
 
-    public static function getDataUser() {
-        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user ");
+    public static function getDataUser($id) {
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE id = '$id'");
 
         if ($select->execute()) {
             $datas = $select->fetchAll();
