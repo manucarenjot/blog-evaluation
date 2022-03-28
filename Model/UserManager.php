@@ -140,10 +140,14 @@ class UserManager
             $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user");
 
             if ($select->execute()) {
+                ?>
+                <div class="userList">
+                <h3>Liste des utilisateurs</h3>
+                    <?php
                 $datas = $select->fetchAll();
                 foreach ($datas as $data) {
                 ?>
-                <div class="userList">
+
                     <table>
                         <tbody>
                         <tr>
@@ -160,7 +164,7 @@ class UserManager
                     </table>
 
 
-                </div>
+
                     <form action="?c=espace-admin" method="post" style="display: inline">
                         <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
@@ -172,9 +176,14 @@ class UserManager
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
                         <input type="submit" name="banned" value="❌" alt="Bannir l'utilisateur" title="Bannir l'utilisateur">
                     </form>
+
 <?php
                 }
+                    ?>
+                </div>
+                    <?php
             }
         }
+
 
 }
