@@ -24,7 +24,6 @@ class ModoManager
             $alert[] = '<div class="alert-succes">Vous avez attribuer le role de modérateur à '. ucfirst($username) .'!</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=espace-admin');
             }
         }
     }
@@ -39,7 +38,6 @@ class ModoManager
                     $alert[] = '<div class="alert-error">L\'utilisateur '. ucfirst($username)  .' est déjà modérateur !</div>';
                     if (count($alert) > 0) {
                         $_SESSION['alert'] = $alert;
-                        header('LOCATION: ?c=espace-admin');
                     }
                 }
             }
@@ -94,7 +92,6 @@ class ModoManager
             $alert[] = '<div class="alert-succes">Vous avez retiré le rôle de modérateur de '. ucfirst($username) .'</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=espace-admin');
             }
         }
     }

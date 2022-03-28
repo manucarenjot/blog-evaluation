@@ -12,7 +12,6 @@ class BannedManager
             $alert[] = '<div class="alert-succes">Vous avez banni '. ucfirst($username) .'!</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=espace-admin');
             }
         }
     }
@@ -58,7 +57,7 @@ class BannedManager
                         <td><?= date('d-m-y', strtotime($data['date-de-ban'])) ?></td>
                     </tbody>
                 </table>
-                <form action="?c=espace-admin" method="post" style="display: inline">
+                <form action="?c=espace-moderation" method="post" style="display: inline">
                     <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                     <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
                     <input type="submit" name="deleteBanned" id="debanned" value="🔓" alt="Débannir l'utilisateur" title="Débannir l'utilisateur">
@@ -82,7 +81,6 @@ class BannedManager
             $alert[] = '<div class="alert-succes">Vous avez debanni '. ucfirst($username) .'</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=espace-admin');
             }
         }
     }
