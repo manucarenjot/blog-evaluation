@@ -162,9 +162,6 @@ class UserManager
 
                         </tbody>
                     </table>
-
-
-
                     <form action="?c=espace-admin" method="post" style="display: inline">
                         <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
