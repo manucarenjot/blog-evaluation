@@ -9,13 +9,15 @@ class HomeController extends AbstactController
 
         ArticleManager::getNameArticle();
         if (isset($_GET['article'])) {
-            $id = $_GET['article'];
-            ArticleManager::getArticle($id);
+            $idA = $_GET['article'];
+            ArticleManager::getArticle($idA);
         }
         if ($this->getPostComment()) {
             $username = $_SESSION['user']['username'];
             $comment = strip_tags($_POST['comment']);
             $id = $_POST['id'];
+
+
 
             $alert = [];
             if (empty($username)) {
@@ -33,13 +35,13 @@ class HomeController extends AbstactController
                 $alert[] = '<div class="alert-error">Vous devez être connecté pour écrire un commentaire !</div>';
             }
 
-            if (strlen($comment) <= 2 || strlen($comment) >= 255) {
+            if (strlen($comment) <= 1 || strlen($comment) >= 255) {
                 $alert[] = '<div class="alert-error">Votre commentaire doit contenir entre 2 et 255 caractères !</div>';
             }
 
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
-                header('LOCATION: ?c=home');
+                header('LOCATION: ?c=home&article='.$id);
             }
 
             else {
