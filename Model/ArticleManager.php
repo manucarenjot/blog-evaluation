@@ -68,7 +68,6 @@ class ArticleManager
                             <h5 class="authorComment"><?= $data['username'] ?>
                                 le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
                             <p class="commentArticle"><?= $data['content'] ?></p>
-
                         </div>
                         </div>
                         <?php
