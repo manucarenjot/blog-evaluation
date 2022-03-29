@@ -7,7 +7,11 @@ class HomeController extends AbstactController
     {
         $this->render('public/home');
 
-        ArticleManager::getArticle();
+        ArticleManager::getNameArticle();
+        if (isset($_GET['article'])) {
+            $id = $_GET['article'];
+            ArticleManager::getArticle($id);
+        }
         if ($this->getPostComment()) {
             $username = $_SESSION['user']['username'];
             $comment = strip_tags($_POST['comment']);

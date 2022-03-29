@@ -24,9 +24,26 @@ class ArticleManager
         }
     }
 
-    public static function getArticle()
+    public static function getNameArticle() {
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_articles ");
+
+        if ($select->execute()) {
+            ?>
+            <h1>Articles</h1>
+                <?php
+            $datas = $select->fetchAll();
+            foreach ($datas as $data) {
+                ?>
+                    <a href="?c=home&article=<?=$data['id']?>"><h3 class="titleArticle"><?=$data['title']?></h3></a>
+                    <?php
+            }
+        }
+        }
+
+
+    public static function getArticle($id)
     {
-        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_articles");
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_articles WHERE id = $id");
 
         if ($select->execute()) {
             ?>
@@ -46,17 +63,17 @@ class ArticleManager
                 </form>
                 <p class="contentArticle"><?= $data['content'] ?></p>
 
-
+                <h4>Commentaires 🔻</h4>
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
                     <input type="submit" name="sendComment" value="▶">
                 </form>
-                <a href="?c=home&comment=<?= $data['id'] ?>">Voir les commentaire 🔻</a>
+
 
                 <?php
 
-                if (isset($_GET['comment'])) {
+
                     $idArticle = $data['id'];
                 $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_comment WHERE article_fk = '$idArticle'");
 
@@ -71,7 +88,6 @@ class ArticleManager
                         </div>
                         </div>
                         <?php
-                    }
                 }
                     ?>
                     </div>
