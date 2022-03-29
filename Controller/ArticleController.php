@@ -8,8 +8,5 @@ class ArticleController extends AbstactController
         $this->render('articles/article');
     }
 
-    public function addArticle()
-    {
-        $this->render('articles/addArticle');
-    }
+
 }

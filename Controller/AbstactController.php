@@ -20,6 +20,10 @@ abstract class AbstactController
     public function getPost(): bool {
         return isset($_POST['send']);
     }
+    public function getPostComment(): bool {
+        return isset($_POST['sendComment']);
+    }
+
     public function getDelete(): bool {
         return isset($_POST['delete']);
     }
