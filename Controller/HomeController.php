@@ -46,6 +46,11 @@ class HomeController extends AbstactController
 
             else {
                 ArticleManager::addComment($username, $comment, $id);
+                $alert[] = '<div class="alert-succes">Votre commentaire a été publié</div>';
+                if (count($alert) > 0) {
+                    $_SESSION['alert'] = $alert;
+                    header('LOCATION: ?c=home&article='.$id);
+                }
             }
 
         }
