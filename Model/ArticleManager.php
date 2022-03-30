@@ -70,7 +70,7 @@ class ArticleManager
                     ?>
                 <form action="?c=home" method="post" style="display: inline">
                     <input type="number" name="idComment" value="<?=$data['id']?>" style="display: none">
-                    <input type="submit" name="delete" value="❌" style="display: inline; border: none"">
+                    <input type="submit" name="deleteArticle" value="❌" style="display: inline; border: none" title="Supprimer l'article" ">
                 </form>
                     <?php
                 }
@@ -81,7 +81,7 @@ class ArticleManager
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" value="▶" style="border: none"">
+                    <input type="submit" name="sendComment" value="▶" style="border: none" title="Envoyer le commentaire"">
                 </form>
 
 
@@ -104,7 +104,7 @@ class ArticleManager
                             ?>
                             <form action="?c=home&article=<?=$idArticle?>" method="post" style="display: inline">
                                 <input type="number" name="idComment" value="<?=$data['id']?>" style="display: none">
-                                <input type="submit" name="deleteComment" value="❌" style="display: inline; border: none">
+                                <input type="submit" name="deleteComment" value="❌" style="display: inline; border: none" title="Supprimer le commentaire">
                             </form>
                                 <?php
                             }
