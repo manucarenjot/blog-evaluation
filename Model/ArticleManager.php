@@ -36,15 +36,26 @@ class ArticleManager
 
         if ($select->execute()) {
             ?>
+            <div class="articles">
+
+            <div class="allArticle">
+            <a href="?c=home&a=add-article" class="addArticle">Ajouter un article</a>
             <h1>Articles</h1>
+            <ul>
             <?php
             $datas = $select->fetchAll();
             foreach ($datas as $data) {
                 ?>
-                <a href="?c=home&article=<?= $data['id'] ?>"><h3 class="titleArticle"><?= $data['title'] ?></h3></a>
+                <li><a href="?c=home&article=<?= $data['id'] ?>"><h3 class="titleArticle"><?= $data['title'] ?></h3></a>
+                </li>
                 <?php
             }
         }
+        ?>
+        </ul>
+        </div>
+
+        <?php
     }
 
 
@@ -54,7 +65,8 @@ class ArticleManager
 
         if ($select->execute()) {
             ?>
-            <div class="articles">
+
+
             <?php
             $datas = $select->fetchAll();
 
@@ -82,7 +94,8 @@ class ArticleManager
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" value="▶" style="border: none; color: #0280b6; font-size: x-large"
+                    <input type="submit" name="sendComment" value="▶"
+                           style="border: none; color: #0280b6; font-size: x-large"
                            title="Envoyer le commentaire"">
                 </form>
 
@@ -100,6 +113,7 @@ class ArticleManager
                         <div class="commentArticle">
                             <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
                                 le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
+                        <p class="commentArticle"><?= $data['content'] ?></p>
                             <?php
                             if ($data['username'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
                                 ?>
@@ -111,15 +125,18 @@ class ArticleManager
                                     <input type="submit" name="deleteComment" value="❌"
                                            style="display: inline; border: none" title="Supprimer le commentaire">
                                 </form>
+                                </div>
                                 <?php
                             }
                             ?>
-                            <p class="commentArticle"><?= $data['content'] ?></p>
-                        </div>
-                        </div>
+
+
+
+
                         <?php
                     }
                     ?>
+                    </div>
                     </div>
                     <?php
                 }
@@ -175,7 +192,7 @@ class ArticleManager
         }
     }
 
-        public static function deleteComment(int $id, int $idArticle)
+    public static function deleteComment(int $id, int $idArticle)
     {
         $delete = Connect::getPDO()->prepare("DELETE FROM fpm03_comment WHERE id = '$id'");
 

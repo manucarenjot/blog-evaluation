@@ -1,4 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    background-color: #3b3b3b;
+}
+
+a {
+    text-decoration-line: none;
+    color: #ffffff;
+}
+
+.addArticle {
+    background-color: #3b3b3b;
+    text-align: center;
+    padding: 25px;
+    text-decoration-line: none;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.addArticle:hover {
+
+    background-color: #262626;
+}
+
+.allArticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3b3b3b;
+    text-align: center;
+    width: 20%;
+    color: #ffffff;
+    border:5px solid #2b90e2;
+    font-weight: bold;
+}
+
+.allArticle a {
+    padding: 15px;
+}
+
+.articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    background-color: #3b3b3b;
+    text-align: center;
+    width: 80%;
+    color: #ffffff;
+    border-radius: 15px;
+}
+
+.article {
+    width: 50%;
+    margin: 20%;
+
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    float: left;
+}
+
+.menu a {
+    border: solid 3px #000000;
+    padding: 10px;
+    text-decoration-line: none;
+    color: #eeeeee;
+    background-color: #3b3b3b;
+}
+
+.menu a:hover {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: ridge 3px #2b90e2;
+}
 
 
 #debanned:hover {
