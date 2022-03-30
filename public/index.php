@@ -27,7 +27,7 @@ session_start();
     else {
         ?>
         <a href="?c=user&id=<?=$_SESSION['user']['id']?>">Profil|</a>
-    <a href="?c=user&a=logout">Se déconnecter</a>
+    <a href="?c=user&a=logout">Se déconnecter|</a>
     <?php
     }
     ?>

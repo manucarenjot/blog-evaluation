@@ -82,7 +82,7 @@ class ArticleManager
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" value="▶" style="border: none"
+                    <input type="submit" name="sendComment" value="▶" style="border: none; color: #0280b6; font-size: x-large"
                            title="Envoyer le commentaire"">
                 </form>
 
