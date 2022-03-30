@@ -1,4 +1,6 @@
 <?php
+use App\Routing\Router\Router;
+use App\Controller\ErrorController\ErrorController;
 session_start();
 
 
@@ -15,30 +17,30 @@ session_start();
 </head>
 <body>
 <div class="menu">
-    <a href="?c=home">|Home|</a>
+    <a href="?c=home">Home</a>
     <?php
     if (!isset($_SESSION['user']))
     {
     ?>
-    <a href="?c=user&a=register">S'inscrire|</a>
-    <a href="?c=user&a=login">Se connecter|</a>
+    <a href="?c=user&a=register">S'inscrire</a>
+    <a href="?c=user&a=login">Se connecter</a>
     <?php
     }
     else {
         ?>
-        <a href="?c=user&id=<?=$_SESSION['user']['id']?>">Profil|</a>
-    <a href="?c=user&a=logout">Se déconnecter|</a>
+        <a href="?c=user&id=<?=$_SESSION['user']['id']?>">Profil</a>
+    <a href="?c=user&a=logout">Se déconnecter</a>
     <?php
     }
-    ?>
-    <a href="?c=contact">Contact|</a>
-    <?php
+
+
+
     if (isset($_SESSION['admin']) or isset($_SESSION['modo']) )
     {
 
 
     ?>
-    <a href="?c=espace-moderation">Espace-moderation|</a>
+    <a href="?c=espace-moderation">Espace-moderation</a>
 
 
     <?php
@@ -48,16 +50,15 @@ session_start();
     <?php
     if (isset($_SESSION['admin'])) {
     ?>
-    <a href="?c=espace-admin">Espace-admin|</a>
+    <a href="?c=espace-admin">Espace-admin</a>
     <?php
     }
     ?>
 </div>
 
 <?php
-//Todo vérifier le chemin pour faire une page de profil, ?c=user&a=profil&id=$id
-use App\Routing\Router\Router;
-use App\Controller\ErrorController\ErrorController;
+
+
 
 
 require __DIR__ . '/../require.php';

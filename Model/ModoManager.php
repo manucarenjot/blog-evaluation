@@ -71,7 +71,7 @@ class ModoManager
                     <form action="?c=espace-admin" method="post" style="display: inline">
                         <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                        <input type="submit" name="delete" id="deleteModo" value="❌" alt="Retirer les droits" title="Retirer les droits">
+                        <input type="submit" name="delete" class="submit" id="deleteModo" value="❌" alt="Retirer les droits" title="Retirer les droits">
                     </form>
 
 

@@ -74,15 +74,15 @@ class ArticleManager
                 ?>
                 <div class="article">
                 <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
-                <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
                 <h6 class="dateArticle" style="display: inline">Publié
                     le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
+                <h3 class="titleArticle"><?= $data['title'] ?></h3>
                 <?php
                 if ($data['author'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
                     ?>
                     <form action="?c=home&article=<?= $data['id'] ?>" method="post" style="display: inline">
                         <input type="number" name="idArticle" value="<?= $data['id'] ?>" style="display: none">
-                        <input type="submit" name="deleteArticle" value="❌" style="display: inline; border: none"
+                        <input type="submit" name="deleteArticle" class="submit" value="❌" style="display: inline; border: none; cursor: pointer"
                                title="Supprimer l'article" ">
                     </form>
                     <?php
@@ -94,8 +94,8 @@ class ArticleManager
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" value="▶"
-                           style="border: none; color: #0280b6; font-size: x-large"
+                    <input type="submit" name="sendComment" class="submit" value="▶"
+                           style="border: none; color: #0280b6; font-size: x-large; cursor: pointer"
                            title="Envoyer le commentaire"">
                 </form>
 
@@ -113,7 +113,7 @@ class ArticleManager
                         <div class="commentArticle">
                             <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
                                 le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
-                        <p class="commentArticle"><?= $data['content'] ?></p>
+
                             <?php
                             if ($data['username'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
                                 ?>
@@ -122,9 +122,10 @@ class ArticleManager
                                            style="display: none">
                                     <input type="number" name="idComment" value="<?= $data['id'] ?>"
                                            style="display: none">
-                                    <input type="submit" name="deleteComment" value="❌"
-                                           style="display: inline; border: none" title="Supprimer le commentaire">
+                                    <input type="submit" name="deleteComment" class="submit" value="❌"
+                                           style="display: inline; border: none; cursor: pointer" title="Supprimer le commentaire">
                                 </form>
+                                <p class="commentArticleTitle"><?= $data['content'] ?></p>
                                 </div>
                                 <?php
                             }

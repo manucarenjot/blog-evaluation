@@ -165,13 +165,13 @@ class UserManager
                     <form action="?c=espace-admin" method="post" style="display: inline">
                         <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                        <input type="submit" name="addModo" value="👑" alt="Ajouter modo" title="Ajouter modo">
+                        <input type="submit" name="addModo" class="submit" value="👑" alt="Ajouter modo" title="Ajouter modo">
                     </form>
 
                     <form action="?c=espace-moderation" method="post" style="display: inline">
                         <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                         <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                        <input type="submit" name="banned" value="❌" alt="Bannir l'utilisateur" title="Bannir l'utilisateur">
+                        <input type="submit" name="banned" class="submit" value="❌" alt="Bannir l'utilisateur" title="Bannir l'utilisateur">
                     </form>
 
 <?php

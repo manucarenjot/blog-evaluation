@@ -33,6 +33,10 @@ a {
     background-color: #262626;
 }
 
+.addArticleForm {
+    padding: 25px;
+}
+
 .allArticle {
     display: flex;
     flex-direction: column;
@@ -44,10 +48,15 @@ a {
     color: #ffffff;
     border:5px solid #2b90e2;
     font-weight: bold;
+    padding-left: 25px;
 }
 
 .allArticle a {
     padding: 15px;
+}
+
+.allArticle a:hover {
+    color: #adadad;
 }
 
 .articles {
@@ -59,12 +68,11 @@ a {
     text-align: center;
     width: 80%;
     color: #ffffff;
-    border-radius: 15px;
 }
 
 .article {
     width: 50%;
-    margin: 20%;
+    margin: 5%;
 
 }
 
@@ -89,6 +97,38 @@ a {
     border: ridge 3px #2b90e2;
 }
 
+.alert-succes {
+    background-color: #028638;
+    color: #fffefe;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-error {
+    background-color: #ce5252;
+    color: #fffefe;
+    text-align: center;
+    font-weight: bold;
+}
+
+.commentArticle {
+    width: 50%;
+    padding: 5px;
+}
+
+.commentArticle:hover {
+    background-color: #646464;
+    width: 50%;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 0.5px #3b3b3b solid;
+}
+
+.submit {
+    background-color: #3b3b3b;
+    border: none;
+    cursor: pointer;
+}
 
 #debanned:hover {
     cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='27' height='32' viewport='0 0 100 100' style='fill:black;font-size:16px;'><text y='50%'>🔑</text></svg>") 16 0,auto; /*!emojicursor.app*/

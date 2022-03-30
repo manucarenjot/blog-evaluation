@@ -60,7 +60,7 @@ class BannedManager
                 <form action="?c=espace-moderation" method="post" style="display: inline">
                     <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                     <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                    <input type="submit" name="deleteBanned" id="debanned" value="🔓" alt="Débannir l'utilisateur" title="Débannir l'utilisateur">
+                    <input type="submit" name="deleteBanned" class="submit" id="debanned" value="🔓" alt="Débannir l'utilisateur" title="Débannir l'utilisateur">
                 </form>
 
 
