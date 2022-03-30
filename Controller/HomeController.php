@@ -52,7 +52,6 @@ class HomeController extends AbstactController
                     header('LOCATION: ?c=home&article='.$id);
                 }
             }
-
         }
     }
 
@@ -106,6 +105,7 @@ class HomeController extends AbstactController
 
             else {
                 ArticleManager::addArticle($author, $title, $contenu);
+
             }
         }
     }

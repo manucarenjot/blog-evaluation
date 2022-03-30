@@ -7,19 +7,25 @@ class ArticleManager
     public static function addArticle(string $author, string $title, string $content)
     {
         $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_articles (author, title, content, date) 
-                                                    VALUES ('$author','$title', '$content', NOW()) ");
+                                                    VALUES (:author, :title, :content, NOW()) ");
+
+        $insert->bindValue(':author', $author);
+        $insert->bindValue(':title', $title);
+        $insert->bindValue(':content', $content);
 
         if ($insert->execute()) {
             $alert = [];
             $alert[] = '<div class="alert-succes">Vous avez ajouté un article!</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=home');
             }
         } else {
             $alert = [];
             $alert[] = '<div class="alert-error">L\'ajout de l\'article a échoué!</div>';
             if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=home');
             }
         }
     }
@@ -102,8 +108,12 @@ class ArticleManager
 
     public static function addComment(string $username, string $content, int $id)
     {
-        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_comment (username, content, article_fk) 
-                                                    VALUES ('$username', '$content', '$id')");
+        $insert = Connect::getPDO()->prepare('INSERT INTO fpm03_comment (username, content, article_fk) 
+                                                    VALUES (:username, :content, :article_fk)');
+
+        $insert->bindValue(':username', $username);
+        $insert->bindValue(':content', $content);
+        $insert->bindValue(':article_fk', $id, PDO::PARAM_INT);
 
         if ($insert->execute()) {
             $alert = [];
