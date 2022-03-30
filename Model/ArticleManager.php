@@ -74,9 +74,9 @@ class ArticleManager
                 ?>
                 <div class="article">
                 <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
-                <h6 class="dateArticle" style="display: inline">Publié
+                <h6 class="dateArticle">Publié
                     le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
-                <h3 class="titleArticle"><?= $data['title'] ?></h3>
+                <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
                 <?php
                 if ($data['author'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
                     ?>
