@@ -64,16 +64,24 @@ class ArticleManager
                 <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
                 <h6 class="dateArticle" style="display: inline">Publié
                     le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
+                <?php
+                if ($data['author']===$_SESSION['user']['username']or isset($_SESSION['modo']) or isset($_SESSION['admin']))
+                {
+                    ?>
                 <form action="?c=home" method="post" style="display: inline">
-                    <input type="submit" name="delete" value="🗑️" style="display: inline">
+                    <input type="number" name="idComment" value="<?=$data['id']?>" style="display: none">
+                    <input type="submit" name="delete" value="❌" style="display: inline; border: none"">
                 </form>
+                    <?php
+                }
+                    ?>
                 <p class="contentArticle"><?= $data['content'] ?></p>
 
                 <h4>Commentaires 🔻</h4>
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" value="▶">
+                    <input type="submit" name="sendComment" value="▶" style="border: none"">
                 </form>
 
 
@@ -88,8 +96,19 @@ class ArticleManager
                     foreach ($datas as $data) {
                         ?>
                         <div class="commentArticle">
-                            <h5 class="authorComment"><?= $data['username'] ?>
+                            <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
                                 le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
+                            <?php
+                            if ($data['username']===$_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin']))
+                            {
+                            ?>
+                            <form action="?c=home&article=<?=$idArticle?>" method="post" style="display: inline">
+                                <input type="number" name="idComment" value="<?=$data['id']?>" style="display: none">
+                                <input type="submit" name="deleteComment" value="❌" style="display: inline; border: none">
+                            </form>
+                                <?php
+                            }
+                                ?>
                             <p class="commentArticle"><?= $data['content'] ?></p>
                         </div>
                         </div>
