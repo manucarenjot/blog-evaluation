@@ -7,6 +7,15 @@ class HomeController extends AbstactController
     {
         $this->render('public/home');
 
+        if ($this->deleteComment()) {
+            $id = $_POST['idComment'];
+            $idArticle = $_POST['idArticle'];
+            ArticleManager::deleteComment($id, $idArticle);
+        }
+        if ($this->deleteArticle()) {
+            $id = $_POST['idArticle'];
+            ArticleManager::deleteArticle($id);
+        }
         ArticleManager::getNameArticle();
         if (isset($_GET['article'])) {
             $idA = $_GET['article'];

@@ -1,4 +1,5 @@
 <?php
+
 abstract class AbstactController
 {
     abstract public function index();
@@ -17,25 +18,42 @@ abstract class AbstactController
         }
     }
 
-    public function getPost(): bool {
+    public function getPost(): bool
+    {
         return isset($_POST['send']);
     }
-    public function getPostComment(): bool {
+
+    public function getPostComment(): bool
+    {
         return isset($_POST['sendComment']);
     }
 
-    public function getDelete(): bool {
+    public function getDelete(): bool
+    {
         return isset($_POST['delete']);
     }
-    public function getDeleteBanned(): bool {
+
+    public function getDeleteBanned(): bool
+    {
         return isset($_POST['deleteBanned']);
     }
 
-public function getBanned(): bool {
-    return isset($_POST['banned']);
-}
+    public function deleteArticle(): bool
+    {
+        return isset($_POST['deleteArticle']);
+    }
+    public function deleteComment(): bool
+    {
+        return isset($_POST['deleteComment']);
+    }
 
-    public function getModo(): bool {
+    public function getBanned(): bool
+    {
+        return isset($_POST['banned']);
+    }
+
+    public function getModo(): bool
+    {
         return isset($_POST['addModo']);
     }
 
