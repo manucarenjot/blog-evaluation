@@ -104,6 +104,12 @@ class ArticleManager
                     <p class="contentArticle"><?= $data['content'] ?></p>
                 </div>
                 <h4>Commentaires 🔻</h4>
+
+                <?php
+                if (!isset($_SESSION['banned'])) {
+
+
+                ?>
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
                     <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
@@ -111,7 +117,9 @@ class ArticleManager
                            style="border: none; color: #0280b6; font-size: x-large; cursor: pointer"
                            title="Envoyer le commentaire"">
                 </form>
-
+                    <?php
+                }
+                    ?>
 
                 <?php
 

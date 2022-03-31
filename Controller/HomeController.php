@@ -115,4 +115,8 @@ class HomeController extends AbstactController
             }
         }
     }
+
+    public function youBanned() {
+        $this->render('public/bann');
+    }
 }

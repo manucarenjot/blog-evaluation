@@ -84,4 +84,15 @@ class BannedManager
             }
         }
     }
+
+    public static function getUserIsBanned(): void {
+        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_banned WHERE mail = '{$_SESSION['user']['mail']}'");
+
+        if ($select->execute()) {
+            $datas = $select->fetchAll();
+            foreach ($datas as $data) {
+                $_SESSION['banned'] = $data['mail'];
+            }
+        }
+    }
 }

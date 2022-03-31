@@ -72,6 +72,7 @@ class UserController extends AbstactController
             $password = ($_POST['password']);
 
             UserManager::connectUserWithMail($mail, $password);
+            BannedManager::getUserIsBanned();
         }
     }
 
@@ -139,6 +140,7 @@ class UserController extends AbstactController
             }
         }
     }
+
 
 
 }

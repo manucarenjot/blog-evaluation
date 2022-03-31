@@ -35,7 +35,8 @@ class Router
             case 'role':
                 $control->getRole();
                 break;
-
+            case 'banned':
+                $control->youBanned();
 
 
         }
