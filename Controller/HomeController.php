@@ -17,10 +17,7 @@ class HomeController extends AbstactController
             ArticleManager::deleteArticle($id);
         }
         ArticleManager::getNameArticle();
-        if (isset($_GET['article'])) {
-            $idA = $_GET['article'];
-            ArticleManager::getArticle($idA);
-        }
+
         if ($this->getPostComment()) {
             $username = $_SESSION['user']['username'];
             $comment = strip_tags($_POST['comment']);
