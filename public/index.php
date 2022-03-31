@@ -1,6 +1,8 @@
 <?php
+
 use App\Routing\Router\Router;
 use App\Controller\ErrorController\ErrorController;
+
 session_start();
 
 
@@ -16,49 +18,44 @@ session_start();
     <title>Blog</title>
 </head>
 <body>
-<div class="menu">
-    <a href="?c=home">Home</a>
-    <?php
-    if (!isset($_SESSION['user']))
-    {
-    ?>
-    <a href="?c=user&a=register">S'inscrire</a>
-    <a href="?c=user&a=login">Se connecter</a>
-    <?php
-    }
-    else {
+<div class="header">
+    <div class="menu">
+        <a href="?c=home">Home</a>
+        <?php
+        if (!isset($_SESSION['user'])) {
+            ?>
+            <a href="?c=user&a=register">S'inscrire</a>
+            <a href="?c=user&a=login">Se connecter</a>
+            <?php
+        } else {
+            ?>
+            <a href="?c=user&id=<?= $_SESSION['user']['id'] ?>">Profil</a>
+            <a href="?c=user&a=logout">Se déconnecter</a>
+            <?php
+        }
+
+
+        if (isset($_SESSION['admin']) or isset($_SESSION['modo'])) {
+
+
+            ?>
+            <a href="?c=espace-moderation">Espace-moderation</a>
+
+
+            <?php
+
+        }
         ?>
-        <a href="?c=user&id=<?=$_SESSION['user']['id']?>">Profil</a>
-    <a href="?c=user&a=logout">Se déconnecter</a>
-    <?php
-    }
-
-
-
-    if (isset($_SESSION['admin']) or isset($_SESSION['modo']) )
-    {
-
-
-    ?>
-    <a href="?c=espace-moderation">Espace-moderation</a>
-
-
-    <?php
-
-    }
-    ?>
-    <?php
-    if (isset($_SESSION['admin'])) {
-    ?>
-    <a href="?c=espace-admin">Espace-admin</a>
-    <?php
-    }
-    ?>
+        <?php
+        if (isset($_SESSION['admin'])) {
+            ?>
+            <a href="?c=espace-admin">Espace-admin</a>
+            <?php
+        }
+        ?>
+    </div>
 </div>
-
 <?php
-
-
 
 
 require __DIR__ . '/../require.php';
