@@ -27,6 +27,7 @@ a {
     color: #ffffff;
     font-weight: bold;
     border-radius: 15px;
+    margin-top: 20px;
 }
 
 .addArticle:hover {
@@ -36,20 +37,22 @@ a {
 
 .addArticleForm {
     padding: 25px;
+    border-radius: 15px;
+    border: 3px rgba(2, 241, 241, 0.7) solid;
 }
 
 .allArticle {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    background-color: #3b3b3b;
+    background-color: #525252;
     text-align: center;
     width: 20%;
     color: #ffffff;
-    border:5px solid rgba(2, 241, 241, 0.7);
+    border-right: ridge 3px rgba(2, 241, 241, 0.7);
     font-weight: bold;
-    padding-left: 25px;
+    border-radius: 15px;
+    font-size: 1em;
 }
 
 .allArticle a {
@@ -61,18 +64,22 @@ a {
 }
 
 .articles {
+    margin: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: space-around;
-    background-color: #3b3b3b;
     text-align: center;
     width: 80%;
     color: #ffffff;
+    background-color: #525252;
+    border-right: ridge 3px rgba(2, 241, 241, 0.7);
+    border-left: ridge 3px rgba(2, 241, 241, 0.7);
+    border-radius: 15px;
 }
 
 .articleAndComment {
-    width: 50%;
+    width: 70%;
     margin: 5%;
 
 }
@@ -175,9 +182,10 @@ a {
     color: #06ffff;
 }
 
-#register {
+.form table,td,th,tr {
     color: #eedfdf;
     margin: 50px;
+    border: none;
 }
 
 .userList {
@@ -208,15 +216,15 @@ a {
     margin: 50px;
 }
 .userInteraction {
-    border: 3px solid black;
+    border-bottom: 3px solid black;
     width: 80%;
     margin-bottom: 15px;
-    border-top: none;
+
+
 }
 
 table, tr, th,td {
     text-align: center;
-    border: 3px solid black;
     border-collapse: collapse;
     width: 80%;
 }
