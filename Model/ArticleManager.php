@@ -139,13 +139,14 @@ class ArticleManager
                                            style="display: inline; border: none; cursor: pointer"
                                            title="Supprimer le commentaire">
                                 </form>
-                                <p class="commentArticleTitle"><?= $data['content'] ?></p>
-                                </div>
+
+
                                 <?php
                             }
                         }
                         ?>
-
+                            <p class="commentArticleTitle"><?= $data['content'] ?></p>
+                        </div>
 
                         <?php
                     }

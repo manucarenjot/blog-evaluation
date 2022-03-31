@@ -117,17 +117,22 @@ a {
 
 .alert-succes {
     background-color: #028638;
-    color: #fffefe;
     text-align: center;
     font-weight: bold;
+    color: #fffefe;
+    border-radius: 15px;
+    padding: 4px;
 }
 
 .alert-error {
     background-color: #ce5252;
-    color: #fffefe;
     text-align: center;
     font-weight: bold;
+    color: #fffefe;
+    border-radius: 15px;
+    padding: 4px;
 }
+
 
 .article {
     background-color: #646464;
@@ -255,6 +260,20 @@ table, tr, th,td {
 
 body > .footer {
     display: table-row;
+}
+
+input {
+    border-radius: 15px;
+    color: #525252;
+}
+
+input[name=comment] {
+    width: 500px;
+}
+
+
+input[type=submit] {
+    background-color: #575757;
 }
 
 #debanned:hover {
