@@ -248,7 +248,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    color: #eae3e3;
 }
 
 #debanned:hover {
