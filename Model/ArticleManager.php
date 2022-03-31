@@ -83,7 +83,7 @@ class ArticleManager
                 ?>
                 <div class="articleAndComment">
                 <div class="article">
-                    <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
+                    <h5 class="author" style="display: inline">De: <?= ucfirst($data['author']) ?></h5>
                     <h6 class="dateArticle">Publié
                         le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
                     <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
@@ -124,7 +124,7 @@ class ArticleManager
                     foreach ($datas as $data) {
                         ?>
                         <div class="commentArticle">
-                        <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
+                        <h5 class="authorComment" style="display: inline"><?= ucfirst($data['username']) ?>
                             le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
 
                         <?php
