@@ -1,3 +1,14 @@
+<?php
+if (!isset($_SESSION['user']['username'])) {
+    $alert = [];
+    $alert[] = '<div class="alert-error">Vous devez vous connecter pour écrire un article !</div>';
+    if (count($alert) > 0) {
+        $_SESSION['alert'] = $alert;
+
+    }
+}
+?>
+
 <div class="addArticleForm">
     <form action="?c=home&a=add-article" method="post">
         <table>

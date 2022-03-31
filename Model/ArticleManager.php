@@ -74,22 +74,25 @@ class ArticleManager
                 ?>
                 <div class="articleAndComment">
                 <div class="article">
-                <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
-                <h6 class="dateArticle">Publié
-                    le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
-                <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
-                <?php
-                if ($data['author'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
-                    ?>
-                    <form action="?c=home&article=<?= $data['id'] ?>" method="post" style="display: inline">
-                        <input type="number" name="idArticle" value="<?= $data['id'] ?>" style="display: none">
-                        <input type="submit" name="deleteArticle" class="submit" value="❌" style="display: inline; border: none; cursor: pointer"
-                               title="Supprimer l'article" ">
-                    </form>
+                    <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
+                    <h6 class="dateArticle">Publié
+                        le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
+                    <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
                     <?php
-                }
-                ?>
-                <p class="contentArticle"><?= $data['content'] ?></p>
+                    if (isset($_SESSION['user']['username'])) {
+                        if ($data['author'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
+                            ?>
+                            <form action="?c=home&article=<?= $data['id'] ?>" method="post" style="display: inline">
+                                <input type="number" name="idArticle" value="<?= $data['id'] ?>" style="display: none">
+                                <input type="submit" name="deleteArticle" class="submit" value="❌"
+                                       style="display: inline; border: none; cursor: pointer"
+                                       title="Supprimer l'article" ">
+                            </form>
+                            <?php
+                        }
+                    }
+                    ?>
+                    <p class="contentArticle"><?= $data['content'] ?></p>
                 </div>
                 <h4>Commentaires 🔻</h4>
                 <form action="?c=home" method="post">
@@ -112,10 +115,11 @@ class ArticleManager
                     foreach ($datas as $data) {
                         ?>
                         <div class="commentArticle">
-                            <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
-                                le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
+                        <h5 class="authorComment" style="display: inline"><?= $data['username'] ?>
+                            le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
 
-                            <?php
+                        <?php
+                        if (isset($_SESSION['user']['username'])) {
                             if ($data['username'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
                                 ?>
                                 <form action="?c=home&article=<?= $idArticle ?>" method="post" style="display: inline">
@@ -124,15 +128,15 @@ class ArticleManager
                                     <input type="number" name="idComment" value="<?= $data['id'] ?>"
                                            style="display: none">
                                     <input type="submit" name="deleteComment" class="submit" value="❌"
-                                           style="display: inline; border: none; cursor: pointer" title="Supprimer le commentaire">
+                                           style="display: inline; border: none; cursor: pointer"
+                                           title="Supprimer le commentaire">
                                 </form>
                                 <p class="commentArticleTitle"><?= $data['content'] ?></p>
                                 </div>
                                 <?php
                             }
-                            ?>
-
-
+                        }
+                        ?>
 
 
                         <?php

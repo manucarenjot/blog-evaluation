@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-content: space-around;
+    align-items: center;
     background-color: #3b3b3b;
 }
 
@@ -165,6 +166,15 @@ a {
     padding: 10px;
 }
 
+.userData a  {
+    color: #09d7d7;
+    font-size: 1.5em;
+}
+
+.userData a:hover {
+    color: #06ffff;
+}
+
 #register {
     color: #eedfdf;
     margin: 50px;
@@ -177,7 +187,21 @@ a {
     align-items: center;
     background-color: #777676;
     text-align: center;
-    width: 30%;
+    width: 50%;
+    border-radius: 15px;
+    border: 3px rgba(2, 241, 241, 0.7) solid;
+    color: #eedfdf;
+    margin: 50px;
+}
+
+.bannedList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #777676;
+    text-align: center;
+    width: 50%;
     border-radius: 15px;
     border: 3px rgba(2, 241, 241, 0.7) solid;
     color: #eedfdf;
@@ -187,6 +211,7 @@ a {
     border: 3px solid black;
     width: 80%;
     margin-bottom: 15px;
+    border-top: none;
 }
 
 table, tr, th,td {

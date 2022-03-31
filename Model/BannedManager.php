@@ -57,11 +57,13 @@ class BannedManager
                         <td><?= date('d-m-y', strtotime($data['date-de-ban'])) ?></td>
                     </tbody>
                 </table>
+            <div class="userInteraction">
                 <form action="?c=espace-moderation" method="post" style="display: inline">
                     <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
                     <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
                     <input type="submit" name="deleteBanned" class="submit" id="debanned" value="🔓" alt="Débannir l'utilisateur" title="Débannir l'utilisateur">
                 </form>
+            </div>
 
 
 <?php
