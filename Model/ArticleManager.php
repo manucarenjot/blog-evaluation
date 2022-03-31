@@ -39,7 +39,7 @@ class ArticleManager
             <div class="articles">
 
             <div class="allArticle">
-            <a href="?c=home&a=add-article" class="addArticle">Ajouter un article</a>
+
             <h1>Articles</h1>
             <ul>
             <?php
@@ -53,6 +53,7 @@ class ArticleManager
         }
         ?>
         </ul>
+        <a href="?c=home&a=add-article" class="addArticle">Ajouter un article</a>
         </div>
 
         <?php

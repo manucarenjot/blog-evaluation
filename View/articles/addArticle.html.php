@@ -8,7 +8,8 @@ if (!isset($_SESSION['user']['username'])) {
     }
 }
 ?>
-
+<h2>Ajouter un article</h2>
+<br>
 <div class="addArticleForm">
     <form action="?c=home&a=add-article" method="post" class="form">
         <table>
