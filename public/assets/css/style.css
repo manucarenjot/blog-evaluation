@@ -46,7 +46,7 @@ a {
     text-align: center;
     width: 20%;
     color: #ffffff;
-    border:5px solid #2b90e2;
+    border:5px solid rgba(2, 241, 241, 0.7);
     font-weight: bold;
     padding-left: 25px;
 }
@@ -70,7 +70,7 @@ a {
     color: #ffffff;
 }
 
-.article {
+.articleAndComment {
     width: 50%;
     margin: 5%;
 
@@ -94,7 +94,7 @@ a {
 .menu a:hover {
     background-color: #1e1e1e;
     color: #ffffff;
-    border: ridge 3px #2b90e2;
+    border: ridge 3px rgba(2, 241, 241, 0.7);
 }
 
 .alert-succes {
@@ -111,23 +111,89 @@ a {
     font-weight: bold;
 }
 
-.commentArticle {
-    width: 50%;
+.article {
+    background-color: #646464;
     padding: 5px;
+    border-radius: 15px;
+    border: 0.5px rgba(2, 241, 241, 0.7) solid;
+    margin: 15px;
+    word-break: break-word;
+}
+
+.commentArticle {
+    background-color: #646464;
+    padding: 5px;
+    width: 80%;
+    border-radius: 15px;
+    border: 0.5px #3b3b3b solid;
+    margin: 15px;
+    word-break: break-word;
 }
 
 .commentArticle:hover {
-    background-color: #646464;
-    width: 50%;
+    background-color: #777676;
     cursor: pointer;
     border-radius: 15px;
-    border: 0.5px #3b3b3b solid;
+    border: 0.5px rgba(2, 241, 241, 0.7) solid;
+    margin: 15px;
 }
 
 .submit {
     background-color: #3b3b3b;
     border: none;
     cursor: pointer;
+}
+
+.user {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.userData {
+    background-color: #777676;
+    text-align: center;
+    width: 30%;
+    border-radius: 15px;
+    border: 3px rgba(2, 241, 241, 0.7) solid;
+    color: #eedfdf;
+    margin: 50px;
+}
+
+.userData h1, h4, p, a {
+    padding: 10px;
+}
+
+#register {
+    color: #eedfdf;
+    margin: 50px;
+}
+
+.userList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #777676;
+    text-align: center;
+    width: 30%;
+    border-radius: 15px;
+    border: 3px rgba(2, 241, 241, 0.7) solid;
+    color: #eedfdf;
+    margin: 50px;
+}
+.userInteraction {
+    border: 3px solid black;
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+table, tr, th,td {
+    text-align: center;
+    border: 3px solid black;
+    border-collapse: collapse;
+    width: 80%;
 }
 
 #debanned:hover {

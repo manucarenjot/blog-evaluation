@@ -72,6 +72,7 @@ class ArticleManager
 
             foreach ($datas as $data) {
                 ?>
+                <div class="articleAndComment">
                 <div class="article">
                 <h5 class="author" style="display: inline">De: <?= $data['author'] ?></h5>
                 <h6 class="dateArticle">Publié
@@ -89,7 +90,7 @@ class ArticleManager
                 }
                 ?>
                 <p class="contentArticle"><?= $data['content'] ?></p>
-
+                </div>
                 <h4>Commentaires 🔻</h4>
                 <form action="?c=home" method="post">
                     <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">

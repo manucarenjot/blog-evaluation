@@ -6,22 +6,24 @@ class UserManager
 
 {
 
-    public static function addUser(string $username, string $mail, string $password) {
+    public static function addUser(string $username, string $mail, string $password)
+    {
         $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_user (username, mail, password, date) 
                                             VALUES('$username', '$mail', '$password', NOW())");
 
-       if ($insert->execute()) {
-           $alert = [];
-           $alert[] = '<div class="alert-succes">Inscription réussi !</div>';
-           if (count($alert) > 0) {
-               $_SESSION['alert'] = $alert;
-               header('LOCATION: ?c=home');
-           }
+        if ($insert->execute()) {
+            $alert = [];
+            $alert[] = '<div class="alert-succes">Inscription réussi !</div>';
+            if (count($alert) > 0) {
+                $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=home');
+            }
 
-       }
+        }
     }
 
-    public static function getMailExist(string $mail) {
+    public static function getMailExist(string $mail)
+    {
         $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = '$mail'");
         if ($get->execute()) {
             $datas = $get->fetchAll();
@@ -38,7 +40,9 @@ class UserManager
         }
 
     }
-    public static function getUsernameExist(string $username) {
+
+    public static function getUsernameExist(string $username)
+    {
         $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE username = '$username'");
         if ($get->execute()) {
             $datas = $get->fetchAll();
@@ -66,55 +70,58 @@ class UserManager
             if (password_verify($password, $data['password'])) {
                 $_SESSION['user'] = $data;
                 header('LOCATION: ?c=home&a=role');
-            }
-            else {
+            } else {
                 $alert[] = '<div class="alert-error">Adresse e-mail ou mot de passe invalide !</div>';
-                if(count($alert) > 0) {
+                if (count($alert) > 0) {
                     $_SESSION['alert'] = $alert;
                     header('LOCATION: ?c=user&a=login');
                 }
 
             }
-        }
-        else {
+        } else {
             $alert[] = '<div class="alert-error">Adresse e-mail ou mot de passe invalide !</div>';
-            if(count($alert) > 0) {
+            if (count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
                 header('LOCATION: ?c=user&a=login');
             }
         }
     }
 
-    public static function getDataUser($id) {
+    public static function getDataUser($id)
+    {
         $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE id = '$id'");
 
         if ($select->execute()) {
+            ?>
+            <div class="user">
+                <?php
             $datas = $select->fetchAll();
             foreach ($datas as $data) {
                 $_SESSION['user'] = $data
                 ?>
-            <div class="userData">
-               <h1><?=ucfirst($data['username']) ?></h1>
+
+                    <div class="userData">
+                        <h1><?= ucfirst($data['username']) ?></h1>
+                        <?php
+                        if (isset($_SESSION['admin'])) {
+                            ?>
+                            <h4>Role : Administrateur</h4>
+                            <?php
+                        }
+                        ?>
+                        <?php
+                        if (isset($_SESSION['modo'])) {
+                            ?>
+                            <h4>Role : Modérateur</h4>
+                            <?php
+                        }
+                        ?>
+                        <p> Adresse e-mail : <?= $data['mail'] ?></p>
+                        <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
+                        <a href="?c=user&a=update&id=<?= $_SESSION['user']['id'] ?>">Modifier le profil</a>
+                    </div>
+
                 <?php
-                if (isset($_SESSION['admin']))
-                {
-                ?>
-                    <h4>Role : Administrateur</h4>
-                    <?php
-                }
-                    ?>
-                <?php
-                if (isset($_SESSION['modo']))
-                {
-                    ?>
-                    <h4>Role : Modérateur</h4>
-                    <?php
-                }
-                ?>
-                <p> Adresse e-mail : <?=$data['mail']?></p>
-                <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
-            </div>
-<?php
 
             }
         }
@@ -126,27 +133,27 @@ class UserManager
                                                     SET username = '$username', password = '$password'
                                                     WHERE id = '{$_SESSION['user']['id']}'");
         if ($update->execute()) {
-                $alert = [];
-                $alert[] = '<div class="alert-succes">Profil modifié</div>';
-                if (count($alert) > 0) {
-                    $_SESSION['alert'] = $alert;
-                    header('LOCATION: ?c=user&id=' . $_SESSION['user']['id']);
-                }
+            $alert = [];
+            $alert[] = '<div class="alert-succes">Profil modifié</div>';
+            if (count($alert) > 0) {
+                $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=user&id=' . $_SESSION['user']['id']);
             }
         }
+    }
 
-        public static function getAllUser()
-        {
-            $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user");
+    public static function getAllUser()
+    {
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user");
 
-            if ($select->execute()) {
-                ?>
-                <div class="userList">
+        if ($select->execute()) {
+            ?>
+            <div class="userList">
                 <h3>Liste des utilisateurs</h3>
-                    <?php
+                <?php
                 $datas = $select->fetchAll();
                 foreach ($datas as $data) {
-                ?>
+                    ?>
 
                     <table>
                         <tbody>
@@ -156,31 +163,35 @@ class UserManager
                             <th>Date d'inscription</th>
 
                         </tr>
-                        <tr>   <td><?=$data['username']?></td>
-                            <td><?=$data['mail']?></td>
+                        <tr>
+                            <td><?= $data['username'] ?></td>
+                            <td><?= $data['mail'] ?></td>
                             <td><?= date('d-m-y', strtotime($data['date'])) ?></td>
 
                         </tbody>
                     </table>
+                    <div class="userInteraction">
                     <form action="?c=espace-admin" method="post" style="display: inline">
-                        <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
-                        <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                        <input type="submit" name="addModo" class="submit" value="👑" alt="Ajouter modo" title="Ajouter modo">
+                        <input type="text" name="username" value="<?= $data['username'] ?>" style="display: none">
+                        <input type="text" name="mail" value="<?= $data['mail'] ?>" style="display: none">
+                        <input type="submit" name="addModo" class="submit" value="👑" alt="Ajouter modo"
+                               title="Ajouter modo">
                     </form>
 
                     <form action="?c=espace-moderation" method="post" style="display: inline">
-                        <input type="text" name="username" value="<?=$data['username']?>" style="display: none">
-                        <input type="text" name="mail" value="<?=$data['mail']?>" style="display: none">
-                        <input type="submit" name="banned" class="submit" value="❌" alt="Bannir l'utilisateur" title="Bannir l'utilisateur">
+                        <input type="text" name="username" value="<?= $data['username'] ?>" style="display: none">
+                        <input type="text" name="mail" value="<?= $data['mail'] ?>" style="display: none">
+                        <input type="submit" name="banned" class="submit" value="❌" alt="Bannir l'utilisateur"
+                               title="Bannir l'utilisateur">
                     </form>
-
-<?php
-                }
-                    ?>
-                </div>
+                    </div>
                     <?php
-            }
+                }
+                ?>
+            </div>
+            <?php
         }
+    }
 
 
 }

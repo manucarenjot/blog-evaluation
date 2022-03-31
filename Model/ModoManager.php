@@ -26,6 +26,7 @@ class ModoManager
                 $_SESSION['alert'] = $alert;
             }
         }
+
     }
 
     public static function getMailModo(string $mail, string $username) {
@@ -38,6 +39,7 @@ class ModoManager
                     $alert[] = '<div class="alert-error">L\'utilisateur '. ucfirst($username)  .' est déjà modérateur !</div>';
                     if (count($alert) > 0) {
                         $_SESSION['alert'] = $alert;
+                        header('LOCATION: ?c=espace-admin');
                     }
                 }
             }

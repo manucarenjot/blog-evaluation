@@ -20,6 +20,8 @@ class AdminController  extends AbstactController {
             $username = trim(strip_tags($_POST['username']));
             ModoManager::getMailModo($mail, $username);
             ModoManager::addModoUser($mail, $username);
+
+
             header('LOCATION: ?c=espace-admin');
         }
 
