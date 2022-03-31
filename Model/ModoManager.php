@@ -62,11 +62,9 @@ class ModoManager
                         <tbody>
                         <tr>
                             <th>Nom</th>
-                            <th>Adresse e-mail</th>
                             <th>Date d'attribuation du rôle</th>
                         </tr>
                         <tr>   <td><?=$data['username']?></td>
-                            <td><?=$data['mail']?></td>
                             <td><?= date('d-m-y', strtotime($data['date'])) ?></td>
                         </tbody>
                     </table>

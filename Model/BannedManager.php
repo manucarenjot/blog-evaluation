@@ -49,11 +49,9 @@ class BannedManager
                     <tbody>
                     <tr>
                         <th>Nom</th>
-                        <th>Adresse e-mail</th>
                         <th>Date de bannissement</th>
                     </tr>
                     <tr>   <td><?=$data['username']?></td>
-                        <td><?=$data['mail']?></td>
                         <td><?= date('d-m-y', strtotime($data['date-de-ban'])) ?></td>
                     </tbody>
                 </table>

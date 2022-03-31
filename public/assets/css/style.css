@@ -191,11 +191,11 @@ a {
 .userList {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     background-color: #777676;
     text-align: center;
-    width: 50%;
+    width: 40%;
     border-radius: 15px;
     border: 3px rgba(2, 241, 241, 0.7) solid;
     color: #eedfdf;
@@ -209,7 +209,7 @@ a {
     align-items: center;
     background-color: #777676;
     text-align: center;
-    width: 50%;
+    width: 40%;
     border-radius: 15px;
     border: 3px rgba(2, 241, 241, 0.7) solid;
     color: #eedfdf;
@@ -226,7 +226,7 @@ a {
 table, tr, th,td {
     text-align: center;
     border-collapse: collapse;
-    width: 80%;
+    width: 50%;
 }
 
 #debanned:hover {
