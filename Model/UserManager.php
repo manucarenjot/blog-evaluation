@@ -124,6 +124,9 @@ class UserManager
                 <?php
 
             }
+            ?>
+            </div>
+                <?php
         }
     }
 

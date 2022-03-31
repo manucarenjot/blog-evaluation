@@ -56,6 +56,14 @@ class ArticleManager
         </div>
 
         <?php
+        if (isset($_GET['article'])) {
+            $id = $_GET['article'];
+        }
+        if (!isset($_GET['article'])) {
+            $id = 1;
+        }
+
+        self::getArticle($id);
     }
 
 

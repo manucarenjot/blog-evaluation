@@ -17,7 +17,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Blog</title>
 </head>
-<body>
+
 <div class="header">
     <div class="menu">
         <a href="?c=home">Home</a>
@@ -97,9 +97,9 @@ switch ($page) {
 
 ?>
 
-<footer>
+<div class="footer">
     <h1>vive la sapologie !</h1>
-</footer>
+</div>
 </body>
 </html>
 
