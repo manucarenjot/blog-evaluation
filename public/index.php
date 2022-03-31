@@ -96,6 +96,10 @@ switch ($page) {
 }
 
 ?>
+
+<footer>
+    <h1>vive la sapologie !</h1>
+</footer>
 </body>
 </html>
 
