@@ -118,7 +118,17 @@ class UserManager
                         ?>
                         <p> Adresse e-mail : <?= $data['mail'] ?></p>
                         <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
+
                         <a href="?c=user&a=update&id=<?= $_SESSION['user']['id'] ?>">Modifier le profil</a>
+                        <?php
+                        if ($data['mail_validate'] === 'not') {
+                        ?>
+                        <form method="post" action="?c=user&id=<?=$_GET['id']?>">
+                            <input type="submit" name="validateMail" title="Envoyer un mail de verification" value="Vérifier l'adresse e-mail">
+                        </form>
+                            <?php
+                        }
+                            ?>
                         <br>
                         <br>
                         <a href="?c=user&a=delete&id=<?= $_SESSION['user']['id'] ?>" style="color: darkred; font-size: 1em">Supprimer son compte utilisateur</a>
