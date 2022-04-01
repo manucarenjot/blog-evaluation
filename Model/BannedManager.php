@@ -94,5 +94,8 @@ class BannedManager
                 $_SESSION['banned'] = $data['mail'];
             }
         }
+        else {
+            $_SESSION['banned'] = '';
+        }
     }
 }

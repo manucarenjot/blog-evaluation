@@ -6,6 +6,12 @@ class HomeController extends AbstactController
     public function index()
     {
         $this->render('public/home');
+        if (isset($_SESSION['user'])) {
+            $alert = [];
+            ModoManager::getModo();
+            AdminManager::getAdmin();
+
+        }
 
         if ($this->deleteComment()) {
             $id = $_POST['idComment'];

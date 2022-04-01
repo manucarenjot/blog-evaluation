@@ -13,6 +13,7 @@ class UserController extends AbstactController
                 $this->validateMail();
             }
         }
+
     }
 
     public function register()
