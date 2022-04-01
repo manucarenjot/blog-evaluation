@@ -1,8 +1,9 @@
 <?php
-if (isset($_SESSION['banned']['user']['mail'])){
+
+
+if ($_SESSION['banned']==='bannis'){
     header('LOCATION: ?c=home&a=banned');
 }
-
 if (!isset($_SESSION['user']['username'])) {
     $alert = [];
     $alert[] = '<div class="alert-error">Vous devez vous connecter pour écrire un article !</div>';

@@ -106,7 +106,7 @@ class ArticleManager
                 <h4>Commentaires 🔻</h4>
 
                 <?php
-                if (!isset($_SESSION['banned'])) {
+                if ($_SESSION['banned'] !== 'bannis') {
 
 
                 ?>
