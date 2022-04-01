@@ -37,6 +37,10 @@ class Router
                 break;
             case 'banned':
                 $control->youBanned();
+                break;
+            case 'delete':
+                $control->deleteAccount();
+                break;
 
 
         }

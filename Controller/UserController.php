@@ -141,6 +141,17 @@ class UserController extends AbstactController
         }
     }
 
+    public function deleteAccount() {
+        $this->render('user/delete');
 
+        if (isset($_POST['notDelete'])) {
+            header('LOCATION: ?c=user&id='. $_SESSION['user']['id']);
+        }
+
+        if ($this->getDelete()) {
+            $id = $_POST['id'];
+            UserManager::deleteAccount($id);
+        }
+    }
 
 }

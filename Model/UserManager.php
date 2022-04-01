@@ -119,6 +119,9 @@ class UserManager
                         <p> Adresse e-mail : <?= $data['mail'] ?></p>
                         <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
                         <a href="?c=user&a=update&id=<?= $_SESSION['user']['id'] ?>">Modifier le profil</a>
+                        <br>
+                        <br>
+                        <a href="?c=user&a=delete&id=<?= $_SESSION['user']['id'] ?>" style="color: darkred; font-size: 1em">Supprimer son compte utilisateur</a>
                     </div>
 
                 <?php
@@ -194,5 +197,18 @@ class UserManager
         }
     }
 
+    public static function deleteAccount($id) {
+        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_user Where id = '$id'");
+
+        if ($delete->execute()) {
+            session_destroy();
+            $alert = [];
+            $alert[] = '<div class="alert-succes">Votre compte a été supprimé au plaisir de vous revoir bientôt</div>';
+            if (count($alert) > 0) {
+                $_SESSION['alert'] = $alert;
+                header('LOCATION: ?c=home');
+            }
+        }
+    }
 
 }

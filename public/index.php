@@ -59,6 +59,9 @@ session_start();
 
 
 require __DIR__ . '/../require.php';
+if (isset($_SESSION['user'])) {
+    BannedManager::getUserIsBanned();
+}
 if (isset($_SESSION['alert']) && count($_SESSION['alert']) > 0) {
     $alerts = $_SESSION['alert'];
     unset($_SESSION['alert']);

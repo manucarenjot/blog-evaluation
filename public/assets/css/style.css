@@ -268,7 +268,9 @@ body > .footer {
 
 input {
     border-radius: 15px;
-    color: #525252;
+
+    color: white;
+    height: 40px;
 }
 
 input[name=comment] {
