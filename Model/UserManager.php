@@ -202,6 +202,7 @@ class UserManager
 
         if ($delete->execute()) {
             session_destroy();
+            session_start();
             $alert = [];
             $alert[] = '<div class="alert-succes">Votre compte a été supprimé au plaisir de vous revoir bientôt</div>';
             if (count($alert) > 0) {

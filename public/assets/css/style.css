@@ -268,8 +268,7 @@ body > .footer {
 
 input {
     border-radius: 15px;
-
-    color: white;
+    color: black;
     height: 40px;
 }
 
@@ -277,9 +276,16 @@ input[name=comment] {
     width: 500px;
 }
 
-
 input[type=submit] {
     background-color: #575757;
+    color: white;
+    cursor: pointer;
+    padding: 2px;
+}
+
+input[type=submit]:hover {
+    background-color: black;
+    border: 3px rgba(2, 241, 241, 0.7) solid;
 }
 
 #debanned:hover {

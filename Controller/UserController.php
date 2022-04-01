@@ -58,7 +58,7 @@ class UserController extends AbstactController
                 $username = lcfirst($username);
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 UserManager::addUser($username, $mail, $passwordHash);
-
+                UserManager::connectUserWithMail($mail, $password);
             }
         }
 
