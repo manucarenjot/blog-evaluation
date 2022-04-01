@@ -57,5 +57,25 @@ abstract class AbstactController
         return isset($_POST['addModo']);
     }
 
-
+    public function validateMail() {
+        $comb = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array();
+        $combLen = strlen($comb) - 1;
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $combLen);
+            $pass[] = $comb[$n];
+        }
+        $pass = implode($pass);
+        $_SESSION['codeValidate'] = $pass;
+        $destinataire = $_SESSION['user']['mail'];
+        $sujet = "Activer votre compte" ;
+        $entete = "From: carenjotje@gmail.com" ;
+        $message = 'Ceci est un mail automatique, Merci de ne pas y répondre.
+---------------
+Bienvenue sur notre Site,
+Pour activer votre compte, veuillez cliquer sur le lien ci dessous
+ou copier/coller dans votre navigateur internet.
+http://localhost/?c=validation&'.$pass.'&'.$_SESSION['user']['username'];
+        mail($destinataire, $sujet, $message, $entete);
+    }
 }

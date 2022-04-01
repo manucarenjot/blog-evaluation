@@ -9,6 +9,9 @@ class UserController extends AbstactController
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             UserManager::getDataUser($id);
+            if (isset($_POST['validateMail'])) {
+                $this->validateMail();
+            }
         }
     }
 
@@ -59,6 +62,8 @@ class UserController extends AbstactController
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 UserManager::addUser($username, $mail, $passwordHash);
                 UserManager::connectUserWithMail($mail, $password);
+
+                $this->validateMail();
             }
         }
 

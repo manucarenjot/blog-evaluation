@@ -88,8 +88,8 @@ switch ($page) {
     case 'user':
         Router::route('UserController', $action);
         break;
-    case 'contact':
-        Router::route('ContactController');
+    case 'validation':
+        Router::route('ValidationController');
         break;
     case 'espace-admin':
         Router::route('AdminController', $action);

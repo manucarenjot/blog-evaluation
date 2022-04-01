@@ -14,7 +14,7 @@ require __DIR__ . '/Model/BannedManager.php';
 require __DIR__ . '/Controller/AbstactController.php';
 require __DIR__ . '/Controller/AdminController.php';
 require __DIR__ . '/Controller/ArticleController.php';
-require __DIR__ . '/Controller/ContactController.php';
+require __DIR__ . '/Controller/ValidationController.php';
 require __DIR__ . '/Controller/ErrorController.php';
 require __DIR__ . '/Controller/HomeController.php';
 require __DIR__ . '/Controller/ModoController.php';

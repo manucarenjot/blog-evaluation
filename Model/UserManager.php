@@ -8,8 +8,8 @@ class UserManager
 
     public static function addUser(string $username, string $mail, string $password)
     {
-        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_user (username, mail, password, date) 
-                                            VALUES('$username', '$mail', '$password', NOW())");
+        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_user (username, mail, password, date, mail_validate) 
+                                            VALUES('$username', '$mail', '$password', NOW(), 'not')");
 
         if ($insert->execute()) {
             $alert = [];
@@ -209,6 +209,16 @@ class UserManager
                 $_SESSION['alert'] = $alert;
                 header('LOCATION: ?c=home');
             }
+        }
+    }
+
+    public static function validateMail() {
+        $id = $_SESSION['user']['id'];
+        $update = Connect::getPDO()->prepare("UPDATE fpm03_user
+                                                    SET mail_validate = 'validate'
+                                                    WHERE id = '$id'");
+        if ($update->execute()) {
+            echo '<p>Votre compte a été vérifier, bienvenue '. ucfirst($_SESSION['user']['username']).' !</p>';
         }
     }
 
