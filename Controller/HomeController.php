@@ -68,7 +68,7 @@ class HomeController extends AbstactController
             ModoManager::getModo();
             AdminManager::getAdmin();
 
-            $alert[] = '<div class="alert-succes">Vous êtes connecté ! '.$_SESSION['user']["username"].'</div>';
+            $alert[] = '<div class="alert-succes">Vous êtes connecté ! '.ucfirst($_SESSION['user']["username"]).'</div>';
             if(count($alert) > 0) {
                 $_SESSION['alert'] = $alert;
                 header('LOCATION: ?c=home');
