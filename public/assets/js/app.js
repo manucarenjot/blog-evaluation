@@ -30,6 +30,24 @@ function checkForm() {
     else {
         password.setCustomValidity("");
     }
+    if (passwordRepeat.value === "") {
+        password.setCustomValidity("Cher sapologue veuillez entrer votre mot de passe")
+    }
+    else {
+        passwordRepeat.setCustomValidity("");
+    }
+    if (passwordRepeat.value.length <= 5) {
+        passwordRepeat.setCustomValidity(" Cher sapologue votre mot de passe doit contenir au minimum 5 caractères")
+    }
+    else {
+        passwordRepeat.setCustomValidity("");
+    }
+    if (passwordRepeat.value !== password.value) {
+        passwordRepeat.setCustomValidity(" Cher sapologue vos mot de passe doit être identiques")
+    }
+    else {
+        passwordRepeat.setCustomValidity("");
+    }
 
     if (username.value === "") {
         username.setCustomValidity("Cher sapologue il vous faut un nom d'utilisateur")
@@ -43,10 +61,71 @@ function checkForm() {
     else {
         username.setCustomValidity("");
     }
+}
 
+let title = document.getElementById("title");
+let content = document.getElementById("content");
+let comment =document.getElementById("comment");
 
+function checkArticle() {
+    if (title.value === "") {
+        title.setCustomValidity("Cher sapologue veuillez entrer votre titre")
+    }
+    else {
+        title.setCustomValidity("");
+    }
+    if (title.value.length <= 5) {
+        title.setCustomValidity(" Cher sapologue votre titre doit contenir au minimum 5 caractères")
+    }
+    else {
+        title.setCustomValidity("");
+    }
+
+    if (content.value === "") {
+        content.setCustomValidity("Cher sapologue veuillez entrer le texte de l'article")
+    }
+    else {
+        content.setCustomValidity("");
+    }
+
+    if (content.value.length <= 10) {
+        content.setCustomValidity(" Cher sapologue votre titre doit contenir au minimum 10 caractères")
+    }
+    else {
+        content.setCustomValidity("");
+    }
+
+    if (comment.value === "") {
+        comment.setCustomValidity("Cher sapologue veuillez entrer votre commentaire")
+    }
+    else {
+        comment.setCustomValidity("");
+    }
+    if (comment.value.length <= 5) {
+        comment.setCustomValidity(" Cher sapologue votre commentaire doit contenir au minimum 5 caractères")
+    }
+    else {
+        comment.setCustomValidity("");
+    }
 }
 
 password.addEventListener('keyup', checkForm)
 mail.addEventListener('keyup', checkForm)
 username.addEventListener('keyup', checkForm)
+passwordRepeat.addEventListener('keyup', checkForm)
+
+title.addEventListener('keyup', checkForm)
+content.addEventListener('keyup', checkForm)
+comment.addEventListener('keyup', checkForm)
+
+
+let alertError = document.querySelector('.alert-error');
+
+function alert() {
+    alertError.style.display = 'none';
+
+}
+
+setTimeout(function () {
+    alertError.style.display = 'none';
+}, 2000)
