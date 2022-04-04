@@ -293,22 +293,17 @@ input[type=submit]:hover {
 }
 
 .alert-succes, .alert-error {
-
-
-    animation: fade 3s steps(90) forwards;
-    -webkit-animation: fade 3s steps(90) forwards;
-    -moz-animation: fade 3s steps(90) forwards;
-
+    animation: fade 6s steps(90) forwards;
+    -webkit-animation: fade 6s steps(90) forwards;
+    -moz-animation: fade 6s steps(90) forwards;
 }
 
 @keyframes fade {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.0;
-    }
+    0% {margin-top: -10px;opacity:0;}
+    25%   { margin-top: 0;opacity:1; }
+    100% {opacity:0; }
 }
+
 
 @media screen and (max-width: 720px)
 {
