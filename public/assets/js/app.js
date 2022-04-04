@@ -126,3 +126,6 @@ const errorMessage = document.querySelector('.alert-error');
 if(errorMessage) {
     setTimeout(() => errorMessage.remove(), 5000);
 }
+
+$alert = ('alert-error');
+$alert.fadeOut(2000);
