@@ -119,7 +119,7 @@ content.addEventListener('keyup', checkForm)
 comment.addEventListener('keyup', checkForm)
 
 
-let alertError = document.querySelector('.alert-error');
+
 
 const errorMessage = document.querySelector('.alert-error');
 
@@ -127,5 +127,8 @@ if(errorMessage) {
     setTimeout(() => errorMessage.remove(), 5000);
 }
 
-$alert = ('alert-error');
-$alert.fadeOut(2000);
+const succesMessage = document.querySelector('.alert-succes');
+
+if(succesMessage) {
+    setTimeout(() => succesMessage.remove(), 5000);
+}
