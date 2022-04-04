@@ -121,11 +121,8 @@ comment.addEventListener('keyup', checkForm)
 
 let alertError = document.querySelector('.alert-error');
 
-function alert() {
-    alertError.style.display = 'none';
+const errorMessage = document.querySelector('.alert-error');
 
+if(errorMessage) {
+    setTimeout(() => errorMessage.remove(), 5000);
 }
-
-setTimeout(function () {
-    alertError.style.display = 'none';
-}, 2000)
