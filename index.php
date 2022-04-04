@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="public/assets/css/style.css">
     <title>Blog</title>
 </head>
 
@@ -58,7 +58,7 @@ session_start();
 <?php
 
 
-require __DIR__ . '/../require.php';
+require __DIR__ . '/require.php';
 if (isset($_SESSION['user'])) {
     BannedManager::getUserIsBanned();
 }
@@ -103,6 +103,8 @@ switch ($page) {
 <div class="footer">
 
 </div>
+
+<script src="public/assets/js/app.js"></script>
 </body>
 </html>
 

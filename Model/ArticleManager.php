@@ -106,20 +106,23 @@ class ArticleManager
                 <h4>Commentaires 🔻</h4>
 
                 <?php
-                if ($_SESSION['banned'] !== 'bannis') {
+                if (isset($_SESSION['user'])) {
+                    if ($_SESSION['banned'] !== 'bannis') {
 
 
-                ?>
-                <form action="?c=home" method="post">
-                    <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
-                    <input type="text" name="comment" placeholder="Ajouter un commentaire" style="display: inline">
-                    <input type="submit" name="sendComment" class="submit" value="▶"
-                           style="border: none; color: #0280b6; font-size: x-large; cursor: pointer"
-                           title="Envoyer le commentaire"">
-                </form>
-                    <?php
+                        ?>
+                        <form action="?c=home" method="post">
+                            <input type="number" name="id" value="<?= $data['id'] ?>" style="display: none">
+                            <input type="text" name="comment" placeholder="Ajouter un commentaire"
+                                   style="display: inline">
+                            <input type="submit" name="sendComment" class="submit" value="▶"
+                                   style="border: none; color: #0280b6; font-size: x-large; cursor: pointer"
+                                   title="Envoyer le commentaire"">
+                        </form>
+                        <?php
+                    }
                 }
-                    ?>
+                ?>
 
                 <?php
 
@@ -132,28 +135,29 @@ class ArticleManager
                     foreach ($datas as $data) {
                         ?>
                         <div class="commentArticle">
-                        <h5 class="authorComment" style="display: inline"><?= ucfirst($data['username']) ?>
-                            le <?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></h5>
+                            <h5 class="authorComment" style="display: inline"><?= ucfirst($data['username']) ?>
+                                le <?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></h5>
 
-                        <?php
-                        if (isset($_SESSION['user']['username'])) {
-                            if ($data['username'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
-                                ?>
-                                <form action="?c=home&article=<?= $idArticle ?>" method="post" style="display: inline">
-                                    <input type="number" name="idArticle" value="<?= $idArticle ?>"
-                                           style="display: none">
-                                    <input type="number" name="idComment" value="<?= $data['id'] ?>"
-                                           style="display: none">
-                                    <input type="submit" name="deleteComment" class="submit" value="❌"
-                                           style="display: inline; border: none; cursor: pointer"
-                                           title="Supprimer le commentaire">
-                                </form>
+                            <?php
+                            if (isset($_SESSION['user']['username'])) {
+                                if ($data['username'] === $_SESSION['user']['username'] or isset($_SESSION['modo']) or isset($_SESSION['admin'])) {
+                                    ?>
+                                    <form action="?c=home&article=<?= $idArticle ?>" method="post"
+                                          style="display: inline">
+                                        <input type="number" name="idArticle" value="<?= $idArticle ?>"
+                                               style="display: none">
+                                        <input type="number" name="idComment" value="<?= $data['id'] ?>"
+                                               style="display: none">
+                                        <input type="submit" name="deleteComment" class="submit" value="❌"
+                                               style="display: inline; border: none; cursor: pointer"
+                                               title="Supprimer le commentaire">
+                                    </form>
 
 
-                                <?php
+                                    <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
                             <p class="commentArticleTitle"><?= $data['content'] ?></p>
                         </div>
 

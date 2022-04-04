@@ -1,8 +1,9 @@
 <?php
 
-
-if ($_SESSION['banned']==='bannis'){
-    header('LOCATION: ?c=home&a=banned');
+if (isset($_SESSION['user'])) {
+    if ($_SESSION['banned'] === 'bannis') {
+        header('LOCATION: ?c=home&a=banned');
+    }
 }
 if (!isset($_SESSION['user']['username'])) {
     $alert = [];
