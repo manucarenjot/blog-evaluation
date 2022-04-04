@@ -117,7 +117,7 @@ class UserManager
                         }
                         ?>
                         <p> Adresse e-mail : <?= $data['mail'] ?></p>
-                        <p>Inscrit depuis le : <?= date('d-m-y  à H:i', strtotime($data['date'])) ?></p>
+                        <p>Inscrit depuis le : <?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></p>
 
                         <a href="?c=user&a=update&id=<?= $_SESSION['user']['id'] ?>">Modifier le profil</a>
                         <?php
@@ -180,7 +180,7 @@ class UserManager
                         </tr>
                         <tr>
                             <td><?= $data['username'] ?></td>
-                            <td><?= date('d-m-y', strtotime($data['date'])) ?></td>
+                            <td><?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></td>
 
                         </tbody>
                     </table>

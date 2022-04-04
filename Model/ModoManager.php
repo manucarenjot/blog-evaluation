@@ -65,7 +65,7 @@ class ModoManager
                             <th>Date d'attribuation du rôle</th>
                         </tr>
                         <tr>   <td><?=$data['username']?></td>
-                            <td><?= date('d-m-y', strtotime($data['date'])) ?></td>
+                            <td><?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></td>
                         </tbody>
                     </table>
             <div class="userInteraction">

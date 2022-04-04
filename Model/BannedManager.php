@@ -52,7 +52,7 @@ class BannedManager
                         <th>Date de bannissement</th>
                     </tr>
                     <tr>   <td><?=$data['username']?></td>
-                        <td><?= date('d-m-y', strtotime($data['date-de-ban'])) ?></td>
+                        <td><?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date-de-ban']))) ?></td>
                     </tbody>
                 </table>
             <div class="userInteraction">

@@ -85,7 +85,7 @@ class ArticleManager
                 <div class="article">
                     <h5 class="author" style="display: inline">De: <?= ucfirst($data['author']) ?></h5>
                     <h6 class="dateArticle">Publié
-                        le: <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h6>
+                        le: <?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></h6>
                     <h3 class="titleArticle" style="display: inline"><?= $data['title'] ?></h3>
                     <?php
                     if (isset($_SESSION['user']['username'])) {
@@ -133,7 +133,7 @@ class ArticleManager
                         ?>
                         <div class="commentArticle">
                         <h5 class="authorComment" style="display: inline"><?= ucfirst($data['username']) ?>
-                            le <?= date('d-m-y à H:m', strtotime($data['date'])) ?></h5>
+                            le <?= date('d-m-y à H:i:s', strtotime('+2 hour', strtotime($data['date']))) ?></h5>
 
                         <?php
                         if (isset($_SESSION['user']['username'])) {
