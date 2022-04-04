@@ -69,7 +69,7 @@ abstract class AbstactController
         $_SESSION['codeValidate'] = $pass;
         $destinataire = $_SESSION['user']['mail'];
         $sujet = "Activer votre compte" ;
-        $entete = "From: carenjotje@gmail.com" ;
+        $entete = "From: blog@world-of-sapologie.com" ;
         $message = 'Ceci est un mail automatique, Merci de ne pas y répondre.
 ---------------
 Bienvenue sur notre Site,
