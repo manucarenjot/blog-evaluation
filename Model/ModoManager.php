@@ -5,7 +5,8 @@ use App\Connect\Connect;
 class ModoManager
 {
     public static function getModo() {
-        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_modo WHERE mail = '{$_SESSION['user']['mail']}'");
+        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_modo WHERE mail = :mail");
+        $select->bindValue(':mail', $_SESSION['user']['mail']);
 
         if ($select->execute()) {
             $datas = $select->fetchAll();
@@ -17,7 +18,9 @@ class ModoManager
 
 
     public static function addModoUser(string $mail, string $username) {
-        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_modo (username, mail, date) value ('$username','$mail',NOW())");
+        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_modo (username, mail, date) value (:username, :mail, NOW())");
+        $insert->bindValue(':username', $username);
+        $insert->bindValue(':mail', $mail);
 
         if ($insert->execute()) {
             $alert = [];
@@ -30,7 +33,8 @@ class ModoManager
     }
 
     public static function getMailModo(string $mail, string $username) {
-        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_modo WHERE mail = '$mail'");
+        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_modo WHERE mail = :mail");
+        $get->bindValue(':mail', $mail);
         if ($get->execute()) {
             $datas = $get->fetchAll();
             foreach ($datas as $data) {
@@ -86,7 +90,8 @@ class ModoManager
     }
 
     public static function deleteRole(string $mail, string $username) {
-        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_modo WHERE mail = '$mail'");
+        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_modo WHERE mail = :mail");
+        $delete->bindValue(':mail', $mail);
 
         if ($delete->execute()) {
             $alert = [];

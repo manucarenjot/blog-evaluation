@@ -9,7 +9,10 @@ class UserManager
     public static function addUser(string $username, string $mail, string $password)
     {
         $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_user (username, mail, password, date, mail_validate) 
-                                            VALUES('$username', '$mail', '$password', NOW(), 'not')");
+                                            VALUES(:username, :mail, :password, NOW(), 'not')");
+        $insert->bindValue(':username', $username);
+        $insert->bindValue(':mail', $mail);
+        $insert->bindValue(':password', $password);
 
         if ($insert->execute()) {
             $alert = [];
@@ -24,7 +27,8 @@ class UserManager
 
     public static function getMailExist(string $mail)
     {
-        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = '$mail'");
+        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = :mail");
+        $get->bindValue(':mail', $mail);
         if ($get->execute()) {
             $datas = $get->fetchAll();
             foreach ($datas as $data) {
@@ -43,7 +47,8 @@ class UserManager
 
     public static function getUsernameExist(string $username)
     {
-        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE username = '$username'");
+        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE username = :username");
+        $get->bindValue(':username', $username);
         if ($get->execute()) {
             $datas = $get->fetchAll();
             foreach ($datas as $data) {
@@ -62,7 +67,8 @@ class UserManager
     public static function connectUserWithMail(string $mail, string $password)
     {
         $alert = [];
-        $result = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = '$mail'");
+        $result = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE mail = :mail");
+        $result->bindValue('mail', $mail);
 
         $result->execute();
         $data = $result->fetch();
@@ -89,7 +95,8 @@ class UserManager
 
     public static function getDataUser($id)
     {
-        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE id = '$id'");
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_user WHERE id = :id");
+        $select->bindValue(':id', $id);
 
         if ($select->execute()) {
             ?>
@@ -146,8 +153,11 @@ class UserManager
     public static function profilUpdate(string $username, string $password)
     {
         $update = Connect::getPDO()->prepare("UPDATE fpm03_user 
-                                                    SET username = '$username', password = '$password'
-                                                    WHERE id = '{$_SESSION['user']['id']}'");
+                                                    SET username = :username, password = :password
+                                                    WHERE id = :id");
+        $update->bindValue(':username', $username);
+        $update->bindValue(':password', $password);
+        $update->bindValue(':id', $_SESSION['user']['id']);
         if ($update->execute()) {
             $alert = [];
             $alert[] = '<div class="alert-succes">Profil modifié</div>';
@@ -208,7 +218,8 @@ class UserManager
     }
 
     public static function deleteAccount($id) {
-        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_user Where id = '$id'");
+        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_user Where id = :id");
+        $delete->bindValue(':id', $id);
 
         if ($delete->execute()) {
             session_destroy();
@@ -226,7 +237,8 @@ class UserManager
         $id = $_SESSION['user']['id'];
         $update = Connect::getPDO()->prepare("UPDATE fpm03_user
                                                     SET mail_validate = 'validate'
-                                                    WHERE id = '$id'");
+                                                    WHERE id = :id");
+        $update->bindValue(':id', $id);
         if ($update->execute()) {
             echo '<p>Votre compte a été vérifier, bienvenue '. ucfirst($_SESSION['user']['username']).' !</p>';
         }

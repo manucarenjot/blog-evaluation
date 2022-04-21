@@ -70,7 +70,8 @@ class ArticleManager
 
     public static function getArticle($id)
     {
-        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_articles WHERE id = $id");
+        $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_articles WHERE id = :id");
+        $select->bindValue(':id', $id);
 
         if ($select->execute()) {
             ?>
@@ -128,7 +129,8 @@ class ArticleManager
 
 
                 $idArticle = $data['id'];
-                $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_comment WHERE article_fk = '$idArticle'");
+                $select = Connect::getPDO()->prepare("SELECT * FROM fpm03_comment WHERE article_fk = :article_fk");
+                $select->bindValue(':article_fk', $idArticle);
 
                 if ($select->execute()) {
                     $datas = $select->fetchAll();
@@ -201,7 +203,8 @@ class ArticleManager
 
     public static function deleteArticle($id)
     {
-        $delete = Connect::getPDO()->prepare("DELETE FROM fpm03_articles WHERE id = '$id'");
+        $delete = Connect::getPDO()->prepare("DELETE FROM fpm03_articles WHERE id = :id");
+        $delete->bindValue(':id', $id);
 
         if ($delete->execute()) {
             $alert = [];
@@ -222,7 +225,8 @@ class ArticleManager
 
     public static function deleteComment(int $id, int $idArticle)
     {
-        $delete = Connect::getPDO()->prepare("DELETE FROM fpm03_comment WHERE id = '$id'");
+        $delete = Connect::getPDO()->prepare("DELETE FROM fpm03_comment WHERE id = :id");
+        $delete->bindValue(':id', $id);
 
         if ($delete->execute()) {
             $alert = [];

@@ -5,7 +5,9 @@ use App\Connect\Connect;
 class BannedManager
 {
     public static function addBannedUser(string $mail, string $username) {
-        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_banned ( username,mail, `date-de-ban`) value ( '$username','$mail', NOW())");
+        $insert = Connect::getPDO()->prepare("INSERT INTO fpm03_banned ( username,mail, `date-de-ban`) value ( :username, :mail, NOW())");
+        $insert->bindValue(':username', $username);
+        $insert->bindValue(':mail', $mail);
 
         if ($insert->execute()) {
             $alert = [];
@@ -17,7 +19,8 @@ class BannedManager
     }
 
     public static function getMailBanned(string $mail, string $username) {
-        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_banned WHERE mail = '$mail'");
+        $get = Connect::getPDO()->prepare("SELECT * FROM fpm03_banned WHERE mail = :mail");
+        $get->bindValue(':mail', $mail);
         if ($get->execute()) {
             $datas = $get->fetchAll();
             foreach ($datas as $data) {
@@ -74,7 +77,8 @@ class BannedManager
     }
 
     public static function debanned(string $mail, string $username) {
-        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_banned WHERE mail = '$mail'");
+        $delete = Connect::getPDO()->prepare("DELETE  FROM fpm03_banned WHERE mail = :mail");
+        $delete->bindValue(':mail', $mail);
 
         if ($delete->execute()) {
             $alert = [];
@@ -86,7 +90,8 @@ class BannedManager
     }
 
     public static function getUserIsBanned(): void {
-        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_banned WHERE mail = '{$_SESSION['user']['mail']}'");
+        $select = Connect::getPDO()->prepare("SELECT * FROM  fpm03_banned WHERE mail = :mail");
+        $select->bindValue(':mail', $_SESSION['user']['mail']);
         $_SESSION['banned'] = '';
         if ($select->execute()) {
             $datas = $select->fetchAll();
