@@ -1,4 +1,8 @@
-
+<?php
+if (isset($_SESSION['user'])) {
+    header('LOCATION: ?c=home');
+}
+?>
 <form action="?c=user&a=register" method="post" id="register">
     <table>
         <tr>
